@@ -17,6 +17,7 @@ async function addPost(data) {
         location: data.location,
         url: data.url,
         username: data.username,
+        options: data.options,
         createdAt: serverTimestamp(),
     });
 

@@ -1,14 +1,16 @@
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import React from 'react';
 import { Box, HStack, VStack, Text} from 'native-base';
 import { faHeart, faShare, faComment, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import Video from 'react-native-video';
 
 
-const Cards = ({ post }) => {
+
+const ReelsCards = ({ post }) => {
   return (
     <Box 
-        height={460} 
+        height={600} 
         width="95%" 
         background="white" 
         margin={2}
@@ -33,11 +35,11 @@ const Cards = ({ post }) => {
             </VStack>
         </HStack>
         <Box height="80%" pt={3}>
-            <Image source={{uri:post.url,
+            <Video source={{uri:post.url,
             }}
             style={{height:"100%",width:"100%"}}
             resizeMode="cover"
-            />
+        />
         </Box>
         <HStack height="10%" alignItems="center" justifyContent="space-between">
             <HStack space={6} pl={4}>
@@ -54,6 +56,6 @@ const Cards = ({ post }) => {
   );
 };
 
-export default Cards
+export default ReelsCards
 
 const styles = StyleSheet.create({})

@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native'
 import React, {useState} from 'react'
-import { Box , Button, Input, Text} from 'native-base';
+import { Box , Button, Input, Text, Select} from 'native-base';
 import { addPost } from '../firebase/operation';
 
 
@@ -8,6 +8,7 @@ const Posts = ({navigation}) => {
   const [Username,setUsername] = useState("");
   const [Userlocation,setLocation] = useState("");
   const [UserURL,setURL] = useState("");
+  const [UserSelection, setSelection] = useState("");
 
 
   const handleSubmit = () => {
@@ -15,15 +16,25 @@ const Posts = ({navigation}) => {
       username:Username,
       location: Userlocation,
       url: UserURL,
+      options: UserSelection,
     };
   
   const response = addPost(data);
-
-    if(response != ""){
+    if(response != "")
+    {
       setUsername("");
       setLocation("");
       setURL("");
-      navigation.navigate("Home")
+      setSelection("");
+
+      if (UserSelection === 'Reels') 
+      {
+        navigation.navigate('Reels');
+      } 
+      else 
+      {
+        navigation.navigate('Home');
+      }
     };
   };
 
@@ -69,6 +80,23 @@ const Posts = ({navigation}) => {
           height={50}
           backgroundColor="#fff"
       />  
+
+      <Select
+        placeholder="Options"
+        selectedValue={UserSelection}
+        onValueChange={(itemValue) => setSelection (itemValue)}
+        borderRadius={5}
+        borderColor="#0066cc"
+        borderWidth={2}
+        p={3}
+        mb={8}
+        height={50}
+        backgroundColor="#fff"
+      >
+        <Select.Item label="Post" value="Post" />
+        <Select.Item label="Story" value="Story" />
+        <Select.Item label="Reels" value="Reels" />
+      </Select>
 
     <Button bg="blue.300" borderRadius={5} height={50} onPress={handleSubmit}>
         <Text color="#fff" fontWeight="bold">POST</Text>

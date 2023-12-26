@@ -33,6 +33,7 @@
     "react-native-screens": "^3.29.0",
     "react-native-svg": "^14.1.0",
     "react-native-vector-icons": "^10.0.3",
+    "react-native-video": "^5.2.1",
     "react-native-web": "^0.19.10",
     "react-scripts": "^5.0.1"
   },
